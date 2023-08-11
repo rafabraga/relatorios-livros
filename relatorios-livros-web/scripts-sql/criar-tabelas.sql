@@ -1,0 +1,41 @@
+CREATE TABLE editora (
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE idioma (
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE genero (
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE autor (
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TYPE ESTADO_CONSERVACAO AS ENUM ('NOVO', 'USADO');
+
+CREATE TABLE livro (
+	id SERIAL PRIMARY KEY,
+	isbn VARCHAR(13) NOT NULL,
+	nome VARCHAR(100) NOT NULL,
+	descricao TEXT NOT NULL,
+	estado_conservacao ESTADO_CONSERVACAO NOT NULL,
+	ano SMALLINT NOT NULL,
+	preco NUMERIC(6,2) NOT NULL,
+	capa BYTEA,
+	editora_id INT NOT NULL REFERENCES editora(id),
+	idioma_id INT NOT NULL REFERENCES idioma(id),
+	genero_id INT NOT NULL REFERENCES genero(id)
+);
+
+CREATE TABLE livro_autor (
+	livro_id INT NOT NULL REFERENCES livro(id),
+	autor_id INT NOT NULL REFERENCES autor(id),
+	PRIMARY KEY (livro_id, autor_id)
+);
