@@ -1,4 +1,4 @@
-# relatorios-livros
+# relatorios-livros-jasperreports
 
 Exemplo de geração de relatórios utilizando Jasper Reports e Java. Para isso, foram criados dois projetos:
 
@@ -12,11 +12,12 @@ Os dados dos livros estão gravados em um banco de dados PostreSQL que sobe junt
 * Java 17
 * Spring Boot 3.x
 * Jasper Reports 6.x
+* PostgreSQL 15.3
 * Docker
 
 ## Modelo de dados
 
-<img src="./img/diagrama-er.png" alt="Statoscope example" width="650">
+<img src="./img/diagrama-er.png" alt="Diagrama ER" width="650">
 
 ## Como rodar
 
